@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+//add imports - allows to read data from service to component
+import { Color } from './color';
+import { ColorService } from '../color.service';
+
 @Component({
   selector: 'app-color-sort',
   templateUrl: './color-sort.component.html',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColorSortComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+  //grab all of the colors
+  colors: Color [] = [];
+
+  //define new variables
+  color: Color;
+  id: Number;
+
+
+    constructor(
+      private colorService: ColorService
+    ) { }
+
+    ngOnInit() {
+      //store the data into the array created above
+      this.colorService.getColors().subscribe(data => this.colors = data);
+    }
+
+  onChange(){
+    console.log(this.id);
+    this.colorService.getColor(this.id).subscribe(data => this.color = data);
   }
+
+
 
 }

@@ -1,3 +1,44 @@
-<p>
-  color-sort works!
-</p>
+
+<div class="container">
+
+<div class="section">
+<h1>Palette Options</h1>
+<!-- showing from the db (needs to match the name of the object)-->
+<!-- DISPLAY MULTIPLE  -->
+<div *ngFor="let c of colors">
+  {{c.id}} | {{c.paletteName}} | {{c.color1}} | {{c.color2}} | {{c.color3}}
+</div>
+</div>
+
+
+
+
+<div class="section">
+<!-- FORM TO DISPLAY SINGLE -->
+<h1>Select a Single Palette</h1>
+
+  <select (change)="onChange($event)" [(ngModel)]='id'>
+
+    <option value="1">City</option>
+    <option value="2">Fancy</option>
+    <option value="3">Natural</option>
+    <option value="4">Vivid</option>
+    <option value="5">Dawn</option>
+
+  </select>
+
+  <div *ngFor="let color of color">
+  {{color.id}} | {{color.paletteName}} | {{color.color1}} | {{color.color2}} | {{color.color3}}
+  </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
