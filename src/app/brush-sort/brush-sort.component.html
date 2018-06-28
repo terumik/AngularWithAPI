@@ -1,3 +1,18 @@
-<p>
-  brush-sort works!
-</p>
+<h1>Rush2Brush</h1>
+
+<!-- <div>
+  <label for="material">Material Type: </label>
+  <input [(ngModel)]="material" >
+</div>
+<button type="submit" (click)="onSearch()">Find</button> -->
+
+<div *ngFor="let b of brushes">
+ {{b.id}}, {{b.material}}. {{b.make}}, {{b.shape}} 
+</div>
+
+
+
+<select [(ngModel)]="material" (change)="onSearch($event)">
+  <option value="wood">Wood</option>
+  <option value="plastic">Plastic</option>
+</select>
