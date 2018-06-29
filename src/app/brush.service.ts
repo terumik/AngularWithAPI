@@ -14,24 +14,13 @@ export class BrushService {
     private httpClient: HttpClient
   ) { }
 
-  private handleError(error:HttpErrorResponse){
-    if(error.error instanceof ErrorEvent){
-      console.error('An error occurred: ', error.error.message);
-    } else {
-      console.error(`Backend returned code ${error.status}, body was : ${error.error} `);
-    }
-    return throwError ('Something bad happened!');
-  }
-
   getBrushes(material?:String):Observable<Brush[]>{
     if(material){
       return this.httpClient.get<Brush[]>('http://hanaharrington.ca/Rush2Brush.php?api_key=Access123&rush2brush='+material)
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(err=>{throw (err)}));
     }
     return this.httpClient.get<Brush[]>('http://hanaharrington.ca/Rush2Brush.php?api_key=Access123')
-    .pipe(catchError(this.handleError));
+    .pipe(catchError(err=>{throw (err)}));
   }
 
-
-  
 }
