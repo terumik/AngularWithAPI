@@ -28,7 +28,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NgbModule.forRoot(),
     routing,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
